@@ -10,7 +10,9 @@ const computerPlay = function () {
 // console.log(computerPlay());
 
 const play = function () {
-  let humanMove = prompt("Rock, Paper of Scissors:").toLowerCase();
+  let humanMove = prompt(
+    `Round ${roundNumber} - Rock, Paper of Scissors?`
+  ).toLowerCase();
   let computerMove = computerPlay();
   let result;
   // console.log(humanMove, computerMove);
@@ -47,24 +49,29 @@ const play = function () {
 
 let humanScore = 0;
 let computerScore = 0;
+let roundNumber = 0;
+let drawCount = 0;
 
 while (humanScore < 5 && computerScore < 5) {
+  roundNumber++;
   let result = play();
   if (result[0] === "win") {
-    humanScore = humanScore + 1;
+    humanScore++;
   } else if (result[0] === "lose") {
-    computerScore = computerScore + 1;
+    computerScore++;
+  } else {
+    drawCount++;
   }
-  console.log(`You launched with ${result[1]} and the computer replied with ${result[2]}.  You ${result[0]} this round!  
+  console.log(`Round ${roundNumber} - You launched with ${result[1]} and the computer replied with ${result[2]}.  You ${result[0]} this round!
 The scores are ${humanScore} to you and ${computerScore} to the computer. `);
 }
 
 humanScore === 5
   ? console.log(
-      `You win the match! The final score is ${humanScore} to you and ${computerScore} to the computer.  Well done!`
+      `You win the match after ${roundNumber} rounds! The final score is ${humanScore} to you and ${computerScore} to the computer. ${drawCount} rounds were drawn. Well done!`
     )
   : console.log(
-      `Oh dear, you lost the match! The final score is ${humanScore} to you and ${computerScore} to the computer.  Try again...`
+      `Oh dear, after ${roundNumber} you lost the match! The final score is ${humanScore} to you and ${computerScore} to the computer. ${drawCount} rounds were drawn. Try again...`
     );
 
 // play();
@@ -73,19 +80,21 @@ humanScore === 5
 
 // console.log(humanMove, computerMove);
 
-// Checking the computerPlay fuction is working and is random(ish):
+// Checking the computerPlay fuction is working and is random(ish)ly:
+
 // let rock = 0;
 // let paper = 0;
 // let scissors = 0;
 
-// for (let i = 1; i <= 1000; i++) {
+// for (let i = 1; i <= 10000; i++) {
 //   let winner = computerPlay();
+//   // console.log(winner);
 //   if (winner === "rock") {
-//     rock = rock + 1;
+//     rock++;
 //   } else if (winner === "paper") {
-//     paper = paper + 1;
+//     paper++;
 //   } else {
-//     scissors = scissors + 1;
+//     scissors++;
 //   }
 // }
 
