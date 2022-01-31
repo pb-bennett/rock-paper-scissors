@@ -13,7 +13,7 @@ const play = function () {
   let humanMove = prompt("Rock, Paper of Scissors:").toLowerCase();
   let computerMove = computerPlay();
   let result;
-  console.log(humanMove, computerMove);
+  // console.log(humanMove, computerMove);
 
   if (humanMove === "rock") {
     if (computerMove === "paper") {
@@ -23,8 +23,7 @@ const play = function () {
     } else {
       result = "draw";
     }
-  }
-  if (humanMove === "paper") {
+  } else if (humanMove === "paper") {
     if (computerMove === "paper") {
       result = "draw";
     } else if (computerMove === "scissors") {
@@ -32,8 +31,7 @@ const play = function () {
     } else {
       result = "win";
     }
-  }
-  if (humanMove === "scissors") {
+  } else if (humanMove === "scissors") {
     if (computerMove === "paper") {
       result = "win";
     } else if (computerMove === "scissors") {
@@ -41,12 +39,37 @@ const play = function () {
     } else {
       result = "lose";
     }
+  } else {
+    result = "Not a viable choice.";
   }
-  return result;
+  return [result, humanMove, computerMove];
 };
+
+let humanScore = 0;
+let computerScore = 0;
+
+while (humanScore < 5 && computerScore < 5) {
+  let result = play();
+  if (result[0] === "win") {
+    humanScore = humanScore + 1;
+  } else if (result[0] === "lose") {
+    computerScore = computerScore + 1;
+  }
+  console.log(`You launched with ${result[1]} and the computer replied with ${result[2]}.  You ${result[0]} this round!  
+The scores are ${humanScore} to you and ${computerScore} to the computer. `);
+}
+
+humanScore === 5
+  ? console.log(
+      `You win the match! The final score is ${humanScore} to you and ${computerScore} to the computer.  Well done!`
+    )
+  : console.log(
+      `Oh dear, you lost the match! The final score is ${humanScore} to you and ${computerScore} to the computer.  Try again...`
+    );
+
 // play();
 
-console.log(play());
+// console.log(play());
 
 // console.log(humanMove, computerMove);
 
