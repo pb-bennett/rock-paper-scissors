@@ -55,12 +55,7 @@ const play = function () {
       result = "lose";
     }
   }
-  // } else {
-  //   console.log(
-  //     `${humanMove} is not a valid input.  Try 'rock', 'paper' or 'scissors'.`
-  //   );
-  //   return play();
-  // }
+
   return [result, humanMove, computerMove];
 };
 
@@ -79,7 +74,7 @@ while (humanScore < 5 && computerScore < 5) {
   } else {
     drawCount++;
   }
-  console.log(`Round ${roundNumber} - You launched with ${result[1]} and the computer replied with ${result[2]}.  You ${result[0]} this round!
+  console.log(`Round ${roundNumber} - You picked ${result[1]} and the computer replied with ${result[2]}.  You ${result[0]} this round!
 The scores are ${humanScore} to you and ${computerScore} to the computer. `);
 }
 
@@ -97,7 +92,7 @@ humanScore === 5
 
 // console.log(humanMove, computerMove);
 
-// Checking the computerPlay fuction is working and is random(ish)ly:
+// Checking the computerPlay fuction is working and is random(ish)ly generating plays:
 
 // let rock = 0;
 // let paper = 0;
