@@ -10,12 +10,25 @@ const computerPlay = function () {
 // console.log(computerPlay());
 
 const play = function () {
-  let humanMove = prompt(
-    `Round ${roundNumber} - Rock, Paper of Scissors?`
-  ).toLowerCase();
+  let humanMove = prompt(`Round ${roundNumber} - Rock, Paper or Scissors?`);
   let computerMove = computerPlay();
   let result;
   // console.log(humanMove, computerMove);
+  if (!humanMove) {
+    console.log("Not a valid input, try again.");
+    return play();
+  } else if (
+    humanMove.toLowerCase() !== "rock" &&
+    humanMove.toLowerCase() !== "paper" &&
+    humanMove.toLowerCase() !== "scissors"
+  ) {
+    console.log(
+      `${humanMove} is not a valid input.  Try 'rock', 'paper' or 'scissors'.`
+    );
+    return play();
+  } else {
+    humanMove = humanMove.toLowerCase();
+  }
 
   if (humanMove === "rock") {
     if (computerMove === "paper") {
@@ -41,9 +54,13 @@ const play = function () {
     } else {
       result = "lose";
     }
-  } else {
-    result = "Not a viable choice.";
   }
+  // } else {
+  //   console.log(
+  //     `${humanMove} is not a valid input.  Try 'rock', 'paper' or 'scissors'.`
+  //   );
+  //   return play();
+  // }
   return [result, humanMove, computerMove];
 };
 
@@ -71,7 +88,7 @@ humanScore === 5
       `You win the match after ${roundNumber} rounds! The final score is ${humanScore} to you and ${computerScore} to the computer. ${drawCount} rounds were drawn. Well done!`
     )
   : console.log(
-      `Oh dear, after ${roundNumber} you lost the match! The final score is ${humanScore} to you and ${computerScore} to the computer. ${drawCount} rounds were drawn. Try again...`
+      `Oh dear, after ${roundNumber} rounds you lost the match! The final score is ${humanScore} to you and ${computerScore} to the computer. ${drawCount} rounds were drawn. Try again...`
     );
 
 // play();
@@ -98,4 +115,4 @@ humanScore === 5
 //   }
 // }
 
-// console.log(rock, paper, scissors);
+// console.log(rock, paper, scissors)
